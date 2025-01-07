@@ -352,7 +352,7 @@ const data = [
   },
 ];
 
-const container = document.getElementById('container');
-const heading = document.createElement('h1');
-heading.innerText =  'Top Stories For You';
+const container = document.getElementById("container");
+const heading = document.createElement("h1");
+heading.innerText =  "Top Stories For You";
 container.appendChild(heading);
