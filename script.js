@@ -370,9 +370,9 @@ function displayNews(newsArray) {
         const newsCard = document.createElement("div");
         newsCard.classList.add("news-card");
         newsCard.innerHTML = `
-            <h2>${item.title}</h2><br>
-            <small>${item.dateAndTime}</small>
-            <p>${item.content}</p>
+            <h2>${item.title}</h2>
+            <p><small>${item.dateAndTime}</small></p>
+            <p>${item.content}</p><br>
         `;
         newsContainer.appendChild(newsCard);
     });
