@@ -386,7 +386,7 @@ showMoreButton.addEventListener('click', () => {
     displayedNews += 7;
     displayNews(sortedData.slice(0, displayedNews));
     if (displayedNews >= sortedData.length) {
-          showMoreButton.style.display = "none";
+          showMoreButton.style.display = 'none';
       }
 });
 container.appendChild(showMoreButton);
