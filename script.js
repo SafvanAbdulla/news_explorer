@@ -353,14 +353,6 @@ const data = [
 ];
 
 const container = document.getElementById("container");
-const heading = document.createElement("h1");
-heading.innerText =  "Top Stories For You";
-container.appendChild(heading);
-let displayedNews = 7;
-let flag=0;
-
-//sorting news by date
-const sortedData = data.sort((a, b) => new Date(b.dateAndTime) - new Date(a.dateAndTime));
 
 //search function
 let timeout;
@@ -374,6 +366,15 @@ searchInput.addEventListener('input', ()=> {
     }, 500);
 });
 container.appendChild(searchInput);
+
+const heading = document.createElement("h1");
+heading.innerText =  "Top Stories For You";
+container.appendChild(heading);
+let displayedNews = 7;
+let flag=0;
+
+//sorting news by date
+const sortedData = data.sort((a, b) => new Date(b.dateAndTime) - new Date(a.dateAndTime));
 
 //show more button
 const showMoreButton = document.createElement('button');
