@@ -402,5 +402,4 @@ searchInput.addEventListener('input', ()=> {
     filterNews(searchInput.value);
     }, 500);
 });
-
 container.appendChild(searchInput);
