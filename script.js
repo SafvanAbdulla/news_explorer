@@ -365,7 +365,7 @@ const sortedData = data.sort((a, b) => new Date(b.dateAndTime) - new Date(a.date
 const newsContainer = document.createElement("div");
 newsContainer.classList.add("news-container");
 function displayNews(newsArray) {
-    newsContainer.innerHTML = "";
+    newsContainer.innerHTML = " ";
     newsArray.forEach(item => {
         const newsCard = document.createElement("div");
         newsCard.classList.add("news-card");
