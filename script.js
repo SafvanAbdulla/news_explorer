@@ -377,7 +377,6 @@ function displayNews(newsArray) {
     });
     container.appendChild(newsContainer);
 }
-displayNews(sortedData.slice(0,displayedNews));
 
 //show more button
 const showMoreButton = document.createElement('button');
@@ -387,3 +386,4 @@ showMoreButton.addEventListener('click', () => {
     displayNews(sortedNews.slice(0, displayedNews));
 });
 container.appendChild(showMoreButton);
+displayNews(sortedData.slice(0,displayedNews));
