@@ -397,7 +397,7 @@ businessButton.addEventListener('click', () => {
     flag = 1;
     tagFlag=1;
     displayTagNews(filteredNews);
-    allButton.style.backgroundColor = "#fff300";
+    businessButton.style.backgroundColor = "#fff300";
     });
 
 const politicsButton = document.createElement('button');
@@ -409,7 +409,7 @@ politicsButton.addEventListener('click', () => {
     flag = 1;
     tagFlag=1;
     displayTagNews(filteredNews);
-    allButton.style.backgroundColor = "#fff300";
+    politicsButton.style.backgroundColor = "#fff300";
     });
 
 const entertainmentButton = document.createElement('button');
@@ -421,7 +421,7 @@ entertainmentButton.addEventListener('click', () => {
     flag = 1;
     tagFlag=1;
     displayTagNews(filteredNews);
-    allButton.style.backgroundColor = "#fff300";
+    entertainmentButton.style.backgroundColor = "#fff300";
     });
 
 function displayTagNews(newsArray) {
