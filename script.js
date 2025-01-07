@@ -1,3 +1,4 @@
+
 const data = [
   {
     category: "business",
@@ -351,7 +352,28 @@ const data = [
   },
 ];
 
-const container = document.getElementById('container');
-const heading = document.createElement('h1');
-heading.textContent =  'Top Stories For You';
+const container = document.getElementById("container");
+const heading = document.createElement("h1");
+heading.innerText =  "Top Stories For You";
 container.appendChild(heading);
+
+//sorting news by date
+const sortedData = data.sort((a, b) => new Date(b.dateAndTime) - new Date(a.dateAndTime));
+
+//function to diplay and create card layout for each news
+function displayNews(newsArray) {
+    const newsContainer = document.createElement("div");
+    newsContainer.classList.add("news-container");
+    newsArray.forEach(item => {
+        const newsCard = document.createElement("div");
+        newsCard.classList.add("news-card");
+        newsCard.innerHTML = `
+            <h2>${item.title}</h2><br>
+            <small>${item.dateAndTime}</small>
+            <p>${item.content}</p>
+        `;
+        newsContainer.appendChild(newsCard);
+    });
+    container.appendChild(newsContainer);
+}
+displayNews(sortedData.slice(0,7));
