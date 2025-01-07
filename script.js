@@ -354,6 +354,9 @@ const data = [
 
 const container = document.getElementById("container");
 
+//sorting news by date
+const sortedData = data.sort((a, b) => new Date(b.dateAndTime) - new Date(a.dateAndTime));
+
 //search function
 let timeout;
 const searchInput = document.createElement('input');
@@ -373,8 +376,16 @@ container.appendChild(heading);
 let displayedNews = 7;
 let flag=0;
 
-//sorting news by date
-const sortedData = data.sort((a, b) => new Date(b.dateAndTime) - new Date(a.dateAndTime));
+//adding tags
+const allButton = document.createElement('button');
+allButton.classList.add('tag);
+allButton.textContent = 'All';
+container.appendChild(allButton);
+allButton.addEventListener('click', () => {
+        flag=0;
+        allButton.style.backgroundColor = "#fff300";
+    });
+});
 
 //show more button
 const showMoreButton = document.createElement('button');
