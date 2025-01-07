@@ -362,9 +362,9 @@ let displayedNews = 7;
 const sortedData = data.sort((a, b) => new Date(b.dateAndTime) - new Date(a.dateAndTime));
 
 //function to diplay and create card layout for each news
+const newsContainer = document.createElement("div");
+newsContainer.classList.add("news-container");
 function displayNews(newsArray) {
-    const newsContainer = document.createElement("div");
-    newsContainer.classList.add("news-container");
     newsContainer.innerHTML = "";
     newsArray.forEach(item => {
         const newsCard = document.createElement("div");
