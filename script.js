@@ -383,7 +383,7 @@ const showMoreButton = document.createElement('button');
 showMoreButton.textContent = 'Show More';
 showMoreButton.addEventListener('click', () => {
     displayedNews += 7;
-    displayNews(sortedNews.slice(0, displayedNews));
+    displayNews(sortedData.slice(0, displayedNews));
 });
 container.appendChild(showMoreButton);
 displayNews(sortedData.slice(0,displayedNews));
