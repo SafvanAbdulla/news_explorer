@@ -378,7 +378,7 @@ function displayNews(newsArray) {
     });
     container.appendChild(newsContainer);
 }
-
+displayNews(sortedData.slice(0,displayedNews));
 //show more button
 const showMoreButton = document.createElement('button');
 showMoreButton.textContent = 'Show More';
@@ -390,4 +390,3 @@ showMoreButton.addEventListener('click', () => {
       }
 });
 container.appendChild(showMoreButton);
-displayNews(sortedData.slice(0,displayedNews));
