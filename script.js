@@ -362,6 +362,19 @@ let flag=0;
 //sorting news by date
 const sortedData = data.sort((a, b) => new Date(b.dateAndTime) - new Date(a.dateAndTime));
 
+//search function
+let timeout;
+const searchInput = document.createElement('input');
+searchInput.setAttribute('type', 'text');
+searchInput.setAttribute('placeholder', 'Search....');
+searchInput.addEventListener('input', ()=> {
+    clearTimeout(timeout);
+    timeout = setTimeout(() => {
+    filterNews(searchInput.value);
+    }, 500);
+});
+container.appendChild(searchInput);
+
 //show more button
 const showMoreButton = document.createElement('button');
 showMoreButton.textContent = 'Show More';
@@ -395,18 +408,6 @@ function displayNews(newsArray) {
 }
 displayNews(sortedData.slice(0,displayedNews));
 
-//search function
-let timeout;
-const searchInput = document.createElement('input');
-searchInput.setAttribute('type', 'text');
-searchInput.setAttribute('placeholder', 'Search....');
-searchInput.addEventListener('input', ()=> {
-    clearTimeout(timeout);
-    timeout = setTimeout(() => {
-    filterNews(searchInput.value);
-    }, 500);
-});
-container.appendChild(searchInput);
 
 function filterNews(query) {
     const filteredNews = sortedData.filter(item => item.title.toLowerCase().includes(query.toLowerCase()));
