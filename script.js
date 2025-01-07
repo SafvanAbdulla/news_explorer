@@ -354,6 +354,9 @@ const data = [
 
 const container = document.getElementById("container");
 
+//sorting news by date
+const sortedData = data.sort((a, b) => new Date(b.dateAndTime) - new Date(a.dateAndTime));
+
 //search function
 let timeout;
 const searchInput = document.createElement('input');
@@ -372,9 +375,75 @@ heading.innerText =  "Top Stories For You";
 container.appendChild(heading);
 let displayedNews = 7;
 let flag=0;
+let tagFlag=0;
 
-//sorting news by date
-const sortedData = data.sort((a, b) => new Date(b.dateAndTime) - new Date(a.dateAndTime));
+//adding tags
+const allButton = document.createElement('button');
+allButton.classList.add('tag');
+allButton.textContent = 'All';
+container.appendChild(allButton);
+allButton.addEventListener('click', () => {
+        flag=0;
+        displayNews(sortedData.slice(0,7));
+        allButton.style.backgroundColor = "#fff300";
+    });
+
+const businessButton = document.createElement('button');
+businessButton.classList.add('tag');
+businessButton.textContent = 'Business';
+container.appendChild(businessButton);
+businessButton.addEventListener('click', () => {
+    const filteredNews = sortedData.filter(item => item.category === 'business');
+    flag = 1;
+    tagFlag=1;
+    displayTagNews(filteredNews);
+    businessButton.style.backgroundColor = "#fff300";
+    });
+
+const politicsButton = document.createElement('button');
+politicsButton.classList.add('tag');
+politicsButton.textContent = 'Politics';
+container.appendChild(politicsButton);
+politicsButton.addEventListener('click', () => {
+    const filteredNews = sortedData.filter(item => item.category === 'politics');
+    flag = 1;
+    tagFlag=1;
+    displayTagNews(filteredNews);
+    politicsButton.style.backgroundColor = "#fff300";
+    });
+
+const entertainmentButton = document.createElement('button');
+entertainmentButton.classList.add('tag');
+entertainmentButton.textContent = 'Entertainment';
+container.appendChild(entertainmentButton);
+entertainmentButton.addEventListener('click', () => {
+    const filteredNews = sortedData.filter(item => item.category === 'entertainment');
+    flag = 1;
+    tagFlag=1;
+    displayTagNews(filteredNews);
+    entertainmentButton.style.backgroundColor = "#fff300";
+    });
+
+function displayTagNews(newsArray) {
+  if(flag === 1 && tagFlag === 1){
+    newsContainer.innerHTML = " ";
+  }
+    newsArray.forEach(item => {
+        const newsCard = document.createElement("div");
+        newsCard.classList.add("news-card");
+        newsCard.innerHTML = `
+            <h2>${item.title}</h2>
+            <p><small>${item.dateAndTime}</small></p>
+            <p>${item.content}</p><br>
+        `;
+        newsContainer.appendChild(newsCard);
+    });
+    newsContainer.appendChild(showMoreButton);
+    container.appendChild(newsContainer);
+  if(flag === 1){
+    showMoreButton.style.display = 'none';
+  }
+}
 
 //show more button
 const showMoreButton = document.createElement('button');
@@ -389,6 +458,7 @@ showMoreButton.addEventListener('click', () => {
 //function to diplay and create card layout for each news
 const newsContainer = document.createElement("div");
 newsContainer.classList.add("news-container");
+
 function displayNews(newsArray) {
     newsContainer.innerHTML = " ";
     newsArray.forEach(item => {
