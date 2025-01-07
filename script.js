@@ -393,7 +393,7 @@ businessButton.classList.add('tag');
 businessButton.textContent = 'Business';
 container.appendChild(businessButton);
 businessButton.addEventListener('click', () => {
-    const filteredNews = sortedData.filter(item => item.title === 'business');
+    const filteredNews = sortedData.filter(item => item.category === 'business');
     flag = 1;
     tagFlag=1;
     displayTagNews(filteredNews);
@@ -405,7 +405,7 @@ politicsButton.classList.add('tag');
 politicsButton.textContent = 'Politics';
 container.appendChild(politicsButton);
 politicsButton.addEventListener('click', () => {
-    const filteredNews = sortedData.filter(item => item.title === 'politics');
+    const filteredNews = sortedData.filter(item => item.category === 'politics');
     flag = 1;
     tagFlag=1;
     displayTagNews(filteredNews);
@@ -417,7 +417,7 @@ entertainmentButton.classList.add('tag');
 entertainmentButton.textContent = 'Entertainment';
 container.appendChild(entertainmentButton);
 entertainmentButton.addEventListener('click', () => {
-    const filteredNews = sortedData.filter(item => item.title === 'entertainment');
+    const filteredNews = sortedData.filter(item => item.category === 'entertainment');
     flag = 1;
     tagFlag=1;
     displayTagNews(filteredNews);
