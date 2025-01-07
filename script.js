@@ -375,6 +375,7 @@ heading.innerText =  "Top Stories For You";
 container.appendChild(heading);
 let displayedNews = 7;
 let flag=0;
+let tagFlag=0;
 
 //adding tags
 const allButton = document.createElement('button');
@@ -383,8 +384,66 @@ allButton.textContent = 'All';
 container.appendChild(allButton);
 allButton.addEventListener('click', () => {
         flag=0;
+        displayNews(sortedData.slice(0,7));
         allButton.style.backgroundColor = "#fff300";
     });
+
+const businessButton = document.createElement('button');
+businessButton.classList.add('tag');
+businessButton.textContent = 'Business';
+container.appendChild(businessButton);
+businessButton.addEventListener('click', () => {
+    const filteredNews = sortedData.filter(item => item.title === 'business');
+    flag = 1;
+    tagFlag=1;
+    displayTagNews(filteredNews);
+    allButton.style.backgroundColor = "#fff300";
+    });
+
+const politicsButton = document.createElement('button');
+politicsButton.classList.add('tag');
+politicsButton.textContent = 'Politics';
+container.appendChild(politicsButton);
+politicsButton.addEventListener('click', () => {
+    const filteredNews = sortedData.filter(item => item.title === 'politics');
+    flag = 1;
+    tagFlag=1;
+    displayTagNews(filteredNews);
+    allButton.style.backgroundColor = "#fff300";
+    });
+
+const entertainmentButton = document.createElement('button');
+entertainmentButton.classList.add('tag');
+entertainmentButton.textContent = 'Entertainment';
+container.appendChild(entertainmentButton);
+entertainmentButton.addEventListener('click', () => {
+    const filteredNews = sortedData.filter(item => item.title === 'entertainment');
+    flag = 1;
+    tagFlag=1;
+    displayTagNews(filteredNews);
+    allButton.style.backgroundColor = "#fff300";
+    });
+
+function displayTagNews(newsArray) {
+  if(flag === 1 && tagFlag === 1){
+    newsContainer.innerHTML = " ";
+  }
+    newsArray.forEach(item => {
+        const newsCard = document.createElement("div");
+        newsCard.classList.add("news-card");
+        newsCard.innerHTML = `
+            <h2>${item.title}</h2>
+            <p><small>${item.dateAndTime}</small></p>
+            <p>${item.content}</p><br>
+        `;
+        newsContainer.appendChild(newsCard);
+    });
+    newsContainer.appendChild(showMoreButton);
+    container.appendChild(newsContainer);
+  if(flag === 1){
+    showMoreButton.style.display = 'none';
+  }
+}
 
 //show more button
 const showMoreButton = document.createElement('button');
@@ -399,6 +458,7 @@ showMoreButton.addEventListener('click', () => {
 //function to diplay and create card layout for each news
 const newsContainer = document.createElement("div");
 newsContainer.classList.add("news-container");
+
 function displayNews(newsArray) {
     newsContainer.innerHTML = " ";
     newsArray.forEach(item => {
