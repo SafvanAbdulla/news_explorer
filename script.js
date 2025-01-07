@@ -385,7 +385,6 @@ allButton.addEventListener('click', () => {
         flag=0;
         allButton.style.backgroundColor = "#fff300";
     });
-});
 
 //show more button
 const showMoreButton = document.createElement('button');
