@@ -386,7 +386,7 @@ function displayNews(newsArray) {
         `;
         newsContainer.appendChild(newsCard);
     });
+    newsContainer.appendChild(showMoreButton);
     container.appendChild(newsContainer);
-    container.appendChild(showMoreButton);
 }
 displayNews(sortedData.slice(0,displayedNews));
