@@ -361,6 +361,16 @@ let displayedNews = 7;
 //sorting news by date
 const sortedData = data.sort((a, b) => new Date(b.dateAndTime) - new Date(a.dateAndTime));
 
+//show more button
+const showMoreButton = document.createElement('button');
+showMoreButton.textContent = 'Show More';
+showMoreButton.addEventListener('click', () => {
+    displayedNews += 7;
+    displayNews(sortedData.slice(0, displayedNews));
+    if (displayedNews >= sortedData.length) {
+          showMoreButton.style.display = 'none';
+      }
+});
 //function to diplay and create card layout for each news
 const newsContainer = document.createElement("div");
 newsContainer.classList.add("news-container");
@@ -377,16 +387,6 @@ function displayNews(newsArray) {
         newsContainer.appendChild(newsCard);
     });
     container.appendChild(newsContainer);
+    container.appendChild(showMoreButton);
 }
 displayNews(sortedData.slice(0,displayedNews));
-//show more button
-const showMoreButton = document.createElement('button');
-showMoreButton.textContent = 'Show More';
-showMoreButton.addEventListener('click', () => {
-    displayedNews += 7;
-    displayNews(sortedData.slice(0, displayedNews));
-    if (displayedNews >= sortedData.length) {
-          showMoreButton.style.display = 'none';
-      }
-});
-container.appendChild(showMoreButton);
