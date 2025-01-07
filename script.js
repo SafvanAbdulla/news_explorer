@@ -390,3 +390,16 @@ function displayNews(newsArray) {
     container.appendChild(newsContainer);
 }
 displayNews(sortedData.slice(0,displayedNews));
+
+//search function
+let timeout;
+const searchInput = document.createElement('input');
+searchInput.setAttribute('type', 'text');
+searchInput.setAttribute('placeholder', 'Search....');
+searchInput.addEventListener('input', ()=> {
+    clearTimeout(timeout);
+    timeout = setTimeout(() => {
+    filterNews(searchInput.value);
+    }, 500);
+});
+container.appendChild(searchInput);
