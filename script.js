@@ -356,7 +356,7 @@ const container = document.getElementById("container");
 const heading = document.createElement("h1");
 heading.innerText =  "Top Stories For You";
 container.appendChild(heading);
-
+let displayedNews = 7;
 
 //sorting news by date
 const sortedData = data.sort((a, b) => new Date(b.dateAndTime) - new Date(a.dateAndTime));
@@ -377,10 +377,9 @@ function displayNews(newsArray) {
     });
     container.appendChild(newsContainer);
 }
-displayNews(sortedData.slice(0,7));
+displayNews(sortedData.slice(0,displayedNews));
 
 //show more button
-let displayedNews = 7;
 const showMoreButton = document.createElement('button');
 showMoreButton.textContent = 'Show More';
 showMoreButton.addEventListener('click', () => {
