@@ -357,6 +357,7 @@ const heading = document.createElement("h1");
 heading.innerText =  "Top Stories For You";
 container.appendChild(heading);
 let displayedNews = 7;
+let flag=0;
 
 //sorting news by date
 const sortedData = data.sort((a, b) => new Date(b.dateAndTime) - new Date(a.dateAndTime));
@@ -388,6 +389,9 @@ function displayNews(newsArray) {
     });
     newsContainer.appendChild(showMoreButton);
     container.appendChild(newsContainer);
+  if(flag === 1){
+    showMoreButton.style.display = 'none';
+  }
 }
 displayNews(sortedData.slice(0,displayedNews));
 
@@ -403,3 +407,9 @@ searchInput.addEventListener('input', ()=> {
     }, 500);
 });
 container.appendChild(searchInput);
+
+function filterNews(query) {
+    const filteredNews = newsData.filter(item => item.title.toLowerCase().includes(query.toLowerCase()));
+    flag = 1;
+    displayNews(filteredNews);
+}
