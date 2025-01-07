@@ -378,7 +378,7 @@ let flag=0;
 
 //adding tags
 const allButton = document.createElement('button');
-allButton.classList.add('tag);
+allButton.classList.add('tag');
 allButton.textContent = 'All';
 container.appendChild(allButton);
 allButton.addEventListener('click', () => {
