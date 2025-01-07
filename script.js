@@ -356,24 +356,35 @@ const container = document.getElementById("container");
 const heading = document.createElement("h1");
 heading.innerText =  "Top Stories For You";
 container.appendChild(heading);
+let displayedNews = 7;
 
 //sorting news by date
 const sortedData = data.sort((a, b) => new Date(b.dateAndTime) - new Date(a.dateAndTime));
 
 //function to diplay and create card layout for each news
+const newsContainer = document.createElement("div");
+newsContainer.classList.add("news-container");
 function displayNews(newsArray) {
-    const newsContainer = document.createElement("div");
-    newsContainer.classList.add("news-container");
+    newsContainer.innerHTML = " ";
     newsArray.forEach(item => {
         const newsCard = document.createElement("div");
         newsCard.classList.add("news-card");
         newsCard.innerHTML = `
-            <h2>${item.title}</h2><br>
-            <small>${item.dateAndTime}</small>
-            <p>${item.content}</p>
+            <h2>${item.title}</h2>
+            <p><small>${item.dateAndTime}</small></p>
+            <p>${item.content}</p><br>
         `;
         newsContainer.appendChild(newsCard);
     });
     container.appendChild(newsContainer);
 }
-displayNews(sortedData.slice(0,7));
+
+//show more button
+const showMoreButton = document.createElement('button');
+showMoreButton.textContent = 'Show More';
+showMoreButton.addEventListener('click', () => {
+    displayedNews += 7;
+    displayNews(sortedData.slice(0, displayedNews));
+});
+container.appendChild(showMoreButton);
+displayNews(sortedData.slice(0,displayedNews));
