@@ -386,4 +386,5 @@ showMoreButton.textContent = 'Show More';
 showMoreButton.addEventListener('click', () => {
     displayedNews += 7;
     displayNews(sortedNews.slice(0, displayedNews));
+});
 container.appendChild(showMoreButton);
