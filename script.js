@@ -409,7 +409,7 @@ searchInput.addEventListener('input', ()=> {
 container.appendChild(searchInput);
 
 function filterNews(query) {
-    const filteredNews = newsData.filter(item => item.title.toLowerCase().includes(query.toLowerCase()));
+    const filteredNews = sortedData.filter(item => item.title.toLowerCase().includes(query.toLowerCase()));
     flag = 1;
     displayNews(filteredNews);
 }
