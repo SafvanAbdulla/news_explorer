@@ -353,10 +353,25 @@ const data = [
 ];
 
 const container = document.getElementById("container");
+
+//search function
+let timeout;
+const searchInput = document.createElement('input');
+searchInput.setAttribute('type', 'text');
+searchInput.setAttribute('placeholder', 'Search....');
+searchInput.addEventListener('input', ()=> {
+    clearTimeout(timeout);
+    timeout = setTimeout(() => {
+    filterNews(searchInput.value);
+    }, 500);
+});
+container.appendChild(searchInput);
+
 const heading = document.createElement("h1");
 heading.innerText =  "Top Stories For You";
 container.appendChild(heading);
 let displayedNews = 7;
+let flag=0;
 
 //sorting news by date
 const sortedData = data.sort((a, b) => new Date(b.dateAndTime) - new Date(a.dateAndTime));
@@ -388,5 +403,15 @@ function displayNews(newsArray) {
     });
     newsContainer.appendChild(showMoreButton);
     container.appendChild(newsContainer);
+  if(flag === 1){
+    showMoreButton.style.display = 'none';
+  }
 }
 displayNews(sortedData.slice(0,displayedNews));
+
+
+function filterNews(query) {
+    const filteredNews = sortedData.filter(item => item.title.toLowerCase().includes(query.toLowerCase()));
+    flag = 1;
+    displayNews(filteredNews);
+}
