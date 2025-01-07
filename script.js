@@ -363,6 +363,7 @@ const sortedData = data.sort((a, b) => new Date(b.dateAndTime) - new Date(a.date
 
 //function to diplay and create card layout for each news
 function displayNews(newsArray) {
+    container.innerHTML = '';
     const newsContainer = document.createElement("div");
     newsContainer.classList.add("news-container");
     newsArray.forEach(item => {
