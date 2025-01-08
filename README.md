@@ -17,3 +17,4 @@ Features
 Technologies Used
 * HTML.
 * JavaScript: Handles the core logic, including displaying articles, sorting, filtering, and managing user input.
+* CSS
