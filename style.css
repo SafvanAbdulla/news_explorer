@@ -1,9 +1,10 @@
 .news-card {
-    background-color: #ffeb3b;
+    background-color: #e8e3e2;
     border: 1px solid #ccc;
     border-radius: 4px;
     padding: 10px;
     position: relative;
-    word-wrap: break-word; /* Ensure text doesn't overflow */
-    min-height: 100px; /* Ensure consistent note size */
+    word-wrap: break-word; 
+    min-height: 100px;
+    margin-bottom: 20px;
 }
