@@ -484,4 +484,4 @@ function filterNews(query) {
     const filteredNews = sortedData.filter(item => item.title.toLowerCase().includes(query.toLowerCase()));
     flag = 1;
     displayNews(filteredNews);
-}
+} 
